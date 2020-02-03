@@ -3,7 +3,7 @@ const userinfo = { id: 0, username: '', email: '', name: '' };
 const currentUser = (state = userinfo, action) => {
 	switch (action.type) {
 		case 'SET':
-			console.log(action.payload);
+			// console.log(action.payload);
 
 			return {
 				...state,

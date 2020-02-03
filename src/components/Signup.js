@@ -82,8 +82,8 @@ export default function Signup() {
 		dispatch(user(data.user));
 	};
 
-	const logg = useSelector((state) => state.isLogged);
-	console.log(logg);
+	// const logg = useSelector((state) => state.isLogged);
+	// console.log(logg);
 
 	return (
 		<Grid container component="main" className={classes.root}>

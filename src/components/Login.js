@@ -63,11 +63,11 @@ export default function SignIn() {
 		// .then((data) => console.log(data));
 	};
 
-	const logg = useSelector((state) => state.isLogged);
-	console.log(logg);
+	// const logg = useSelector((state) => state.isLogged);
+	// console.log(logg);
 	const setLogged = (data) => {
 		dispatch(logged());
-		console.log(data.user);
+		// console.log(data.user);
 		dispatch(user(data.user));
 	};
 

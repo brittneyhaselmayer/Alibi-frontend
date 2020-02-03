@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import logged from '../actions/logged';
 import user from '../actions/user';
+import storeAlibis from '../actions/storeAlibis';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -27,10 +28,12 @@ export default function Nav() {
 	const dispatch = useDispatch();
 
 	const clearuser = { id: 0, username: '', name: '', email: '' };
+	const clearAlibis = { alibi_1_id: 0, alibi_2_id: 0, date: '' };
 
 	const logOut = () => {
 		dispatch(logged());
 		dispatch(user(clearuser));
+		dispatch(storeAlibis(clearAlibis));
 	};
 
 	return (
