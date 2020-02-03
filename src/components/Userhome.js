@@ -12,13 +12,15 @@ export default function Userhome() {
 			<div>
 				<SideBar></SideBar>
 				<Switch>
-					<div className="main">
-						<Route path="/home" exact component={Home}></Route>
-						<Route path="/home/alibi" component={Alibi}></Route>
-						<Route path="/home/pending" component={Pending}></Route>
-						<Route path="/home/events" component={Events}></Route>
-						<Route path="/home/dates" component={Dates}></Route>
-					</div>
+					<>
+						<div className="main">
+							<Route path="/home" exact component={Home}></Route>
+							<Route path="/home/alibi" component={Alibi}></Route>
+							<Route path="/home/pending" component={Pending}></Route>
+							<Route path="/home/events" component={Events}></Route>
+							<Route path="/home/dates" component={Dates}></Route>
+						</div>
+					</>
 				</Switch>
 			</div>
 		</Router>

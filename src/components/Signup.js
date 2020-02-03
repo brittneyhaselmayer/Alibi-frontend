@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -7,6 +6,10 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import logged from '../actions/logged';
+import user from '../actions/user';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -43,6 +46,44 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Signup() {
 	const classes = useStyles();
+	const dispatch = useDispatch();
+
+	const [values, setValues] = useState({
+		username: '',
+		password: '',
+		name: '',
+		email: ''
+	});
+
+	const postNewUser = () => {
+		fetch('http://localhost:3000/users', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify({
+				user: {
+					username: values.username,
+					password: values.password,
+					name: values.name,
+					email: values.email
+				}
+			})
+		})
+			.then((r) => r.json())
+			// .then((data) => console.log(data));
+			.then((data) => setLogged(data));
+	};
+
+	const setLogged = (data) => {
+		dispatch(logged());
+
+		dispatch(user(data.user));
+	};
+
+	const logg = useSelector((state) => state.isLogged);
+	console.log(logg);
 
 	return (
 		<Grid container component="main" className={classes.root}>
@@ -53,7 +94,15 @@ export default function Signup() {
 					<Typography component="h1" variant="h5">
 						Create New User
 					</Typography>
-					<form className={classes.form} noValidate>
+					<form
+						className={classes.form}
+						noValidate
+						onSubmit={(e) => {
+							e.preventDefault();
+							e.persist();
+							postNewUser();
+						}}
+					>
 						<TextField
 							variant="outlined"
 							margin="normal"
@@ -63,6 +112,7 @@ export default function Signup() {
 							label="Email Address"
 							name="email"
 							autoFocus
+							onChange={(e) => setValues({ ...values, email: e.target.value })}
 						/>
 						<TextField
 							variant="outlined"
@@ -73,6 +123,9 @@ export default function Signup() {
 							label="Username"
 							type="text"
 							id="username"
+							onChange={(e) =>
+								setValues({ ...values, username: e.target.value })
+							}
 						/>
 						<TextField
 							variant="outlined"
@@ -83,6 +136,7 @@ export default function Signup() {
 							label="Name"
 							type="text"
 							id="name"
+							onChange={(e) => setValues({ ...values, name: e.target.value })}
 						/>
 						<TextField
 							variant="outlined"
@@ -94,6 +148,9 @@ export default function Signup() {
 							type="password"
 							id="password"
 							autoComplete="current-password"
+							onChange={(e) =>
+								setValues({ ...values, password: e.target.value })
+							}
 						/>
 
 						<Button
@@ -108,7 +165,7 @@ export default function Signup() {
 						<Grid container>
 							<Grid item>
 								<Link to="/login" variant="body2">
-									{"Don't have an account? Sign Up"}
+									{'Already have an account? Log in'}
 								</Link>
 							</Grid>
 						</Grid>

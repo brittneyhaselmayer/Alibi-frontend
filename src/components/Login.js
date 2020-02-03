@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,6 +11,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import logged from '../actions/logged';
+import user from '../actions/user';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -33,6 +36,40 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
 	const classes = useStyles();
+	const dispatch = useDispatch();
+
+	const [values, setValues] = useState({
+		username: '',
+		password: ''
+	});
+
+	const getUser = () => {
+		fetch('http://localhost:3000/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify({
+				user: {
+					username: values.username,
+					password: values.password
+				}
+			})
+		})
+			.then((r) => r.json())
+			.then((data) => setLogged(data));
+		// .then(() => setLogged());
+		// .then((data) => console.log(data));
+	};
+
+	const logg = useSelector((state) => state.isLogged);
+	console.log(logg);
+	const setLogged = (data) => {
+		dispatch(logged());
+		console.log(data.user);
+		dispatch(user(data.user));
+	};
 
 	return (
 		<Container component="main" maxWidth="xs">
@@ -41,7 +78,15 @@ export default function SignIn() {
 				<Typography component="h1" variant="h5">
 					Sign in
 				</Typography>
-				<form className={classes.form} noValidate>
+				<form
+					className={classes.form}
+					noValidate
+					onSubmit={(e) => {
+						e.preventDefault();
+						e.persist();
+						getUser();
+					}}
+				>
 					<TextField
 						variant="outlined"
 						margin="normal"
@@ -51,6 +96,7 @@ export default function SignIn() {
 						label="Username"
 						name="username"
 						autoFocus
+						onChange={(e) => setValues({ ...values, username: e.target.value })}
 					/>
 					<TextField
 						variant="outlined"
@@ -61,13 +107,14 @@ export default function SignIn() {
 						label="Password"
 						type="password"
 						id="password"
+						onChange={(e) => setValues({ ...values, password: e.target.value })}
 					/>
 
 					<Button
 						type="submit"
 						fullWidth
 						variant="contained"
-						color="black"
+						color="default"
 						className={classes.submit}
 					>
 						Sign In
