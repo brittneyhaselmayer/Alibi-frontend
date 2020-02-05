@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import UserSentPendingCard from './UserSentPendingCard';
 
 export default function UserSentPending(props) {
-	// useEffect(() => {
-	// 	setSent(props);
-	// }, [props]);
-	// const [sent, setSent] = useState([]);
-
-	// console.log(sent);
-	console.log(props);
+	// console.log(props);
 
 	return (
 		<div>
