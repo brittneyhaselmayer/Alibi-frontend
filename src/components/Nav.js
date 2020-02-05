@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import logged from '../actions/logged';
 import user from '../actions/user';
 import storeAlibis from '../actions/storeAlibis';
+import truefalsealibi from '../actions/alibiselect';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -34,6 +35,7 @@ export default function Nav() {
 		dispatch(logged());
 		dispatch(user(clearuser));
 		dispatch(storeAlibis(clearAlibis));
+		dispatch(truefalsealibi());
 	};
 
 	return (

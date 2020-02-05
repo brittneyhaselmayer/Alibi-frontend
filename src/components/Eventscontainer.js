@@ -10,7 +10,7 @@ export default function Eventscontainer() {
 			.then((data) => setEvents(data));
 	}, []);
 
-	console.log(events);
+	// console.log(events);
 	return (
 		<div>
 			{events.map((event) => (
