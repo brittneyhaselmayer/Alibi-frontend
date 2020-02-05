@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import UserSentPending from './UserSentPending';
 import { useSelector } from 'react-redux';
 import UserAcceptPending from './UserAcceptPending';

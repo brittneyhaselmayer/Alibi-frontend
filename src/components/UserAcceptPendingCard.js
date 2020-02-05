@@ -5,6 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles({
 	card: {
@@ -24,13 +25,14 @@ const useStyles = makeStyles({
 });
 
 export default function UserAcceptPendingCard(props) {
-	console.log(props);
-	// console.log(props.pending.date);
+	let currentUserid = useSelector((state) => state.currentUser.id);
+
+	// console.log(props.pending.id);
+	// console.log(props.pending.event.id);
 	// console.log(props.pending.event.occasion);
 	const classes = useStyles();
 
-	const [user, setUser] = useState({ name: '' });
-	// console.log(users);
+	const [user, setUser] = useState({});
 
 	// eslint-disable-next-line
 	const findNeededUser = (users) => {
@@ -50,6 +52,48 @@ export default function UserAcceptPendingCard(props) {
 			return <h1> {user.name} </h1>;
 		}
 	};
+
+	const returnId = (user) => {
+		if (user) {
+			return user.id;
+		}
+	};
+
+	const neededid = returnId(user);
+
+	let pendingid = props.pending.id;
+
+	const handleDelete = () => {
+		fetch(`http://localhost:3000/pendings/${pendingid}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then((response) => {
+			console.log('Item was deleted!');
+		});
+	};
+
+	const handleAccept = () => {
+		fetch('http://localhost:3000/meetups', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify({
+				meetup: {
+					date: props.pending.date,
+					alibi_1_id: neededid,
+					alibi_2_id: currentUserid,
+					event_id: props.pending.event.id
+				}
+			})
+		})
+			.then((r) => r.json())
+			.then(() => handleDelete());
+	};
+
 	return (
 		<Card className={classes.card} variant="outlined">
 			<CardContent>
@@ -68,8 +112,12 @@ export default function UserAcceptPendingCard(props) {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button size="small">Accept</Button>
-				<Button size="small">Decline</Button>
+				<Button size="small" onClick={() => handleAccept()}>
+					Accept
+				</Button>
+				<Button size="small" onClick={() => handleDelete()}>
+					Decline
+				</Button>
 			</CardActions>
 		</Card>
 	);
