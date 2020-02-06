@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 export default function DatesContainer() {
 	const [dates, setDates] = useState([]);
-	console.log(dates);
+	// console.log(dates);
 	const currentuserid = useSelector((state) => state.currentUser.id);
 
 	useEffect(() => {
@@ -14,20 +14,26 @@ export default function DatesContainer() {
 		);
 	}, []);
 
-	const acceptedfromothers = dates.filter(
-		(d) => d.alibi_2_id === currentuserid
-	);
-	console.log(acceptedfromothers);
+	const youaccepted = dates.filter((d) => d.alibi_2_id === currentuserid);
+	// console.log(youaccepted);
 
 	const sentoutandaccepted = dates.filter(
 		(d) => d.alibi_1_id === currentuserid
 	);
-	console.log(sentoutandaccepted);
+	// console.log(sentoutandaccepted);
 
 	return (
 		<div>
-			<DatesIncomingCard></DatesIncomingCard>
-			<DatesOutgoingCard></DatesOutgoingCard>
+			<div>
+				{youaccepted.map((e) => (
+					<DatesIncomingCard key={e.id} date={e}></DatesIncomingCard>
+				))}
+			</div>
+			<div>
+				{sentoutandaccepted.map((e) => (
+					<DatesOutgoingCard key={e.id} date={e}></DatesOutgoingCard>
+				))}
+			</div>
 		</div>
 	);
 }
