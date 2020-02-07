@@ -5,8 +5,9 @@ import { useSelector } from 'react-redux';
 
 export default function DatesContainer() {
 	const [dates, setDates] = useState([]);
-	// console.log(dates);
+	console.log(dates);
 	const currentuserid = useSelector((state) => state.currentUser.id);
+	console.log(currentuserid);
 
 	useEffect(() => {
 		fetch('http://localhost:3000/meetups').then((resp) =>
@@ -14,11 +15,11 @@ export default function DatesContainer() {
 		);
 	}, []);
 
-	const youaccepted = dates.filter((d) => d.alibi_2_id === currentuserid);
+	const youaccepted = dates.filter((d) => d.alibi_2.user_id === currentuserid);
 	// console.log(youaccepted);
 
 	const sentoutandaccepted = dates.filter(
-		(d) => d.alibi_1_id === currentuserid
+		(d) => d.alibi_1.user_id === currentuserid
 	);
 	// console.log(sentoutandaccepted);
 

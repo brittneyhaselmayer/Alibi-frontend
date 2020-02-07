@@ -25,15 +25,17 @@ const useStyles = makeStyles({
 
 export default function UserSentPendingCard(props) {
 	const classes = useStyles();
+	console.log(props);
 
 	const [user, setUser] = useState({ name: '' });
 	// console.log(users);
 
-	// eslint-disable-next-line
 	const findNeededUser = (users) => {
-		let neededUser = users.find((u) => u.id === props.pending.alibi_2_id);
+		let neededUser = users.find((u) => u.id === props.pending.alibi_2.user_id);
 		setUser(neededUser);
 	};
+
+	// console.log(user);
 
 	useEffect(() => {
 		fetch('http://localhost:3000/users')

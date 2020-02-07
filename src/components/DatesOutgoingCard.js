@@ -33,7 +33,7 @@ export default function DatesOutgoingCard(props) {
 	}, []);
 
 	const findNeededUser = (data) => {
-		let neededuser = data.find((u) => u.id === props.date.alibi_2_id);
+		let neededuser = data.find((u) => u.id === props.date.alibi_2.user_id);
 		setUser(neededuser);
 	};
 

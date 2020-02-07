@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 
 export default function UserAcceptPendingCard(props) {
 	let currentUserid = useSelector((state) => state.currentUser.id);
-
+	console.log(props);
 	// console.log(props.pending.id);
 	// console.log(props.pending.event.id);
 	// console.log(props.pending.event.occasion);
@@ -36,7 +36,7 @@ export default function UserAcceptPendingCard(props) {
 
 	// eslint-disable-next-line
 	const findNeededUser = (users) => {
-		let neededUser = users.find((u) => u.id === props.pending.alibi_1_id);
+		let neededUser = users.find((u) => u.id === props.pending.alibi_1.user_id);
 		setUser(neededUser);
 	};
 
@@ -84,8 +84,8 @@ export default function UserAcceptPendingCard(props) {
 			body: JSON.stringify({
 				meetup: {
 					date: props.pending.date,
-					alibi_1_id: neededid,
-					alibi_2_id: currentUserid,
+					alibi_1_id: props.pending.alibi_1_id,
+					alibi_2_id: props.pending.alibi_2_id,
 					event_id: props.pending.event.id
 				}
 			})

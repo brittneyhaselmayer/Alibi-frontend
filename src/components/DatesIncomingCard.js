@@ -35,7 +35,9 @@ export default function DatesIncomingCard(props) {
 	}, []);
 
 	const findNeededUser = (data) => {
-		let neededUser = data.find((user) => user.id === props.date.alibi_1_id);
+		let neededUser = data.find(
+			(user) => user.id === props.date.alibi_1.user_id
+		);
 		setUser(neededUser);
 	};
 

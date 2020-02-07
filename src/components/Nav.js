@@ -10,6 +10,7 @@ import logged from '../actions/logged';
 import user from '../actions/user';
 import storeAlibis from '../actions/storeAlibis';
 import truefalsealibi from '../actions/alibiselect';
+import isAlibi from '../actions/isAlibi';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -36,6 +37,7 @@ export default function Nav() {
 		dispatch(user(clearuser));
 		dispatch(storeAlibis(clearAlibis));
 		dispatch(truefalsealibi());
+		dispatch(isAlibi());
 	};
 
 	return (

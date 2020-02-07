@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import isAlibi from '../actions/isAlibi';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default function DatepickerCalender() {
+	const dispatch = useDispatch();
 	const currentUser = useSelector((state) => state.currentUser.id);
 	const [startDate, setStartDate] = useState(new Date());
 	const month = startDate.getMonth() + 1;
 	const day = startDate.getDate();
 	const year = startDate.getFullYear();
 	const datearr = [month, day, year].toString();
-	// console.log(datearr);
-	// console.log(month); // month (1-12)
-	// console.log(day); // day of the month (1-31)
-	// console.log(year); // year
-	// console.log(currentUser);
 
 	const postAlibi = () => {
 		fetch('http://localhost:3000/alibis', {
@@ -30,9 +27,9 @@ export default function DatepickerCalender() {
 					when: datearr
 				}
 			})
-		}).then((r) => r.json());
-		// .then((data) => console.log(data));
-		// .then((data) => console.log(data));
+		})
+			.then((r) => r.json())
+			.then((data) => dispatch(isAlibi(data.id)));
 	};
 
 	return (
