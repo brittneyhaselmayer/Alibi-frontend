@@ -26,32 +26,29 @@ function App() {
 		// 		</Switch>
 		// 	</div>
 		// </Router>
-
-		<div>
+		<>
 			{logg ? (
 				<Router>
-					<div>
+					<main id="main__container" className="grid">
 						<Nav></Nav>
 						{/* <Switch> */}
 						<Redirect to="/home" component={UserHome}></Redirect>
 						{/* <UserHome></UserHome> */}
 						<Route path="/home" component={UserHome}></Route>
 						{/* </Switch> */}
-					</div>
+					</main>
 				</Router>
 			) : (
 				<Router>
-					<div>
-						<Nav></Nav>
-						<Switch>
-							<Route path="/" exact component={Signup}></Route>
-							<Route path="/login" component={Login}></Route>
-							{/* <Route path="/home" component={UserHome}></Route> */}
-						</Switch>
-					</div>
+					<Nav></Nav>
+					<Switch>
+						<Route path="/" exact component={Signup}></Route>
+						<Route path="/login" component={Login}></Route>
+						{/* <Route path="/home" component={UserHome}></Route> */}
+					</Switch>
 				</Router>
 			)}
-		</div>
+		</>
 	);
 }
 

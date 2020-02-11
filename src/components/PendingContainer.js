@@ -24,12 +24,9 @@ export default function PendingContainer() {
 	}, []);
 
 	return (
-		<div>
-			pending container
-			<div>
-				<UserSentPending userSent={userSent}></UserSentPending>
-				<UserAcceptPending userAccept={userAccept}></UserAcceptPending>
-			</div>
-		</div>
+		<>
+			<UserSentPending userSent={userSent}></UserSentPending>
+			<UserAcceptPending userAccept={userAccept}></UserAcceptPending>
+		</>
 	);
 }

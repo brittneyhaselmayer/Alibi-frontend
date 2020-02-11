@@ -1,0 +1,13 @@
+#sidenav {
+	background-color: #02111b;
+	grid-area: sidebar;
+	height: 100%;
+	overflow-x: hidden;
+	padding-top: 20px;
+	width: 100%;
+	z-index: 1;
+}
+
+#sidenav li:not(:last-child) {
+	margin-bottom: 16px;
+}

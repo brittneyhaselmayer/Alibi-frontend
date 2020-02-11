@@ -1,16 +1,5 @@
-.App {
-	text-align: center;
-}
-
-.App-logo {
-	height: 40vmin;
-	pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
+* {
+	box-sizing: border-box;
 }
 
 .App-header {
@@ -25,7 +14,7 @@
 }
 
 .App-link {
-	color: #61dafb;
+	color: #61fb6e;
 }
 
 @keyframes App-logo-spin {
@@ -37,20 +26,53 @@
 	}
 }
 
-/* The sidenav */
-.sidenav {
-	height: 100%;
-	width: 250px;
-	position: fixed;
-	z-index: 1;
-	top: 10;
-	left: 0;
-	background-color: #111;
-	overflow-x: hidden;
-	padding-top: 20px;
-}
-
 /* Page content */
 .main {
-	margin-left: 250px; /* Same as the width of the sidenav */
+	padding: 24px 16px;
+	overflow-y: auto;
+	background-color: #bfc3ba;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.button {
+	background-color: #30292f;
+	border: 1px solid rgba(18, 18, 18, 0.15);
+	color: #e6e9e3;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 18px;
+	padding: 11px 22px;
+	min-width: 100px;
+	text-align: center;
+	transition: all 0.15s ease-in-out;
+}
+
+.button:hover {
+	background-color: rgb(18, 18, 18);
+	color: rgb(245, 245, 245); /* THIS IS ADAM'S FAVORITE OFF-WHITE */
+	transition: all 0.15s ease-in-out;
+}
+
+.grid {
+	display: grid;
+}
+
+#main__container {
+	grid-template-areas: 'nav nav' 'sidebar main';
+	grid-template-columns: 250px 1fr;
+	grid-template-rows: 64px calc(100vh - 64px);
+}
+
+.card__container {
+	display: inline-block;
+}
+
+.card__container:hover {
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+	cursor: pointer;
 }

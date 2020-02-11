@@ -13,6 +13,7 @@ export default function DatepickerCalender() {
 	const day = startDate.getDate();
 	const year = startDate.getFullYear();
 	const datearr = [month, day, year].toString();
+	let date = datearr.replace(/,/g, '/');
 
 	const postAlibi = () => {
 		fetch('http://localhost:3000/alibis', {
@@ -24,12 +25,12 @@ export default function DatepickerCalender() {
 			body: JSON.stringify({
 				alibi: {
 					user_id: currentUser,
-					when: datearr
+					when: date
 				}
 			})
 		})
 			.then((r) => r.json())
-			.then((data) => dispatch(isAlibi(data.id)));
+			.then(() => dispatch(isAlibi()));
 	};
 
 	return (

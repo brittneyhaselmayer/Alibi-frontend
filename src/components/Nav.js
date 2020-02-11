@@ -12,6 +12,8 @@ import storeAlibis from '../actions/storeAlibis';
 import truefalsealibi from '../actions/alibiselect';
 import isAlibi from '../actions/isAlibi';
 
+import '../styles/Nav.css';
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1
@@ -61,9 +63,9 @@ export default function Nav() {
 		// 	</AppBar>
 		// </div>
 
-		<div>
+		<>
 			{logg ? (
-				<div className={classes.root}>
+				<div id="nav__container" className={classes.root}>
 					<AppBar position="static" color="blue">
 						<Toolbar>
 							<Typography variant="h6" className={classes.title}>
@@ -79,7 +81,7 @@ export default function Nav() {
 					</AppBar>
 				</div>
 			) : (
-				<div className={classes.root}>
+				<div id="nav__container" className={classes.root}>
 					<AppBar position="static" color="blue">
 						<Toolbar>
 							<Typography variant="h6" className={classes.title}>
@@ -96,6 +98,6 @@ export default function Nav() {
 					</AppBar>
 				</div>
 			)}
-		</div>
+		</>
 	);
 }
