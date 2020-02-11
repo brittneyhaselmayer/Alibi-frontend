@@ -43,6 +43,8 @@ export default function SignIn() {
 		password: ''
 	});
 
+	const [correct, setCorrect] = useState(false);
+
 	const getUser = () => {
 		fetch('http://localhost:3000/login', {
 			method: 'POST',
@@ -58,7 +60,15 @@ export default function SignIn() {
 			})
 		})
 			.then((r) => r.json())
-			.then((data) => setLogged(data));
+			// .then((data) => setLogged(data))
+			// .then((data) => console.log(data))
+			.then((obj) => {
+				if (obj.message === 'Invalid username or password') {
+					handleIncorrect();
+				} else {
+					setLogged(obj);
+				}
+			});
 		// .then(() => setLogged());
 		// .then((data) => console.log(data));
 	};
@@ -67,8 +77,12 @@ export default function SignIn() {
 	// console.log(logg);
 	const setLogged = (data) => {
 		dispatch(logged());
-		// console.log(data.user);
+		// console.log(data);
 		dispatch(user(data.user));
+	};
+
+	const handleIncorrect = () => {
+		setCorrect(!correct);
 	};
 
 	return (
@@ -109,6 +123,9 @@ export default function SignIn() {
 						id="password"
 						onChange={(e) => setValues({ ...values, password: e.target.value })}
 					/>
+					<Typography>
+						{correct ? <h3>Incorrect Login</h3> : <div></div>}
+					</Typography>
 
 					<Button
 						type="submit"

@@ -1,0 +1,25 @@
+/* .main {
+	overflow: hidden;
+} */
+
+#pending__container {
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 16px;
+}
+
+#uap-cards__container,
+#usp-cards__container {
+	grid-template-columns: 1fr;
+	grid-gap: 8px;
+	max-height: 600px;
+	/* overflow-y: auto; */
+	padding: 24px 0;
+}
+
+#uap-cards__container .card__container,
+#usp-cards__container .card__container {
+	margin: 0 auto;
+	height: 450px;
+	max-width: 350px;
+	width: 100%;
+}

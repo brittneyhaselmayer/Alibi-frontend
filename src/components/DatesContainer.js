@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import DatesIncomingCard from './DatesIncomingCard';
-import DatesOutgoingCard from './DatesOutgoingCard';
+import DatesIncoming from './DatesIncoming';
+import DatesOutgoing from './DatesOutgoing';
 import { useSelector } from 'react-redux';
 
 export default function DatesContainer() {
@@ -24,17 +24,10 @@ export default function DatesContainer() {
 	// console.log(sentoutandaccepted);
 
 	return (
-		<div>
-			<div>
-				{youaccepted.map((e) => (
-					<DatesIncomingCard key={e.id} date={e}></DatesIncomingCard>
-				))}
-			</div>
-			<div>
-				{sentoutandaccepted.map((e) => (
-					<DatesOutgoingCard key={e.id} date={e}></DatesOutgoingCard>
-				))}
-			</div>
-		</div>
+		<>
+			<DatesIncoming youaccepted={youaccepted} />
+
+			<DatesOutgoing sentoutandaccepted={sentoutandaccepted} />
+		</>
 	);
 }

@@ -43,29 +43,37 @@ export default function DatesIncomingCard(props) {
 
 	const returnName = (user) => {
 		if (user) {
-			return <h1>{user.name}</h1>;
+			return <h2>{user.name}</h2>;
 		}
+	};
+	const getemail = (user) => {
+		if (user) return <h3>{user.email}</h3>;
 	};
 
 	const classes = useStyles();
 	return (
-		<div>
-			<div> YOU ACCEPTED!!</div>
-			<Card className={classes.card} variant="outlined">
-				<CardContent>
-					<Typography gutterBottom>{returnName(user)}</Typography>
-					<Typography className={classes.pos} color="textSecondary">
-						Go to:
-					</Typography>
-					<Typography variant="h5" component="h2">
-						{props.date.event.occasion}
-					</Typography>
+		<Card className={`${classes.card} card__container`} variant="outlined">
+			<CardContent>
+				<Typography className={classes.pos} color="textSecondary">
+					You accepted:
+				</Typography>
+				<Typography variant="h5" component="h2" text-align="center">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					{props.date.event.occasion}
+				</Typography>
+				<Typography className={classes.pos} color="textSecondary">
+					With:
+				</Typography>
+				<Typography gutterBottom>{returnName(user)}</Typography>
 
-					<Typography variant="body2" component="p">
-						On: {props.date.date}
-					</Typography>
-				</CardContent>
-			</Card>
-		</div>
+				<Typography variant="body2" component="p">
+					On: {props.date.date}
+				</Typography>
+				<Typography className={classes.pos} color="textSecondary">
+					Get in touch:
+				</Typography>
+				<Typography gutterBottom>{getemail(user)}</Typography>
+			</CardContent>
+		</Card>
 	);
 }

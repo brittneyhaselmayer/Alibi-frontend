@@ -1,4 +1,4 @@
-const isAlibi = (state = true, action) => {
+const isAlibi = (state = false, action) => {
 	switch (action.type) {
 		case 'SWITCH':
 			return !state;

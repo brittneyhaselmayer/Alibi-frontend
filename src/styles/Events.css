@@ -1,0 +1,4 @@
+#events-cards__container {
+	grid-template-columns: repeat(auto-fit, 275px);
+	grid-gap: 8px;
+}

@@ -3,9 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+
 import Typography from '@material-ui/core/Typography';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+// import useForceUpdate from 'use-force-update';
 
 const useStyles = makeStyles({
 	card: {
@@ -25,11 +26,12 @@ const useStyles = makeStyles({
 });
 
 export default function UserAcceptPendingCard(props) {
-	let currentUserid = useSelector((state) => state.currentUser.id);
-	console.log(props);
+	// let currentUserid = useSelector((state) => state.currentUser.id);
+	// console.log(props);
 	// console.log(props.pending.id);
 	// console.log(props.pending.event.id);
 	// console.log(props.pending.event.occasion);
+	// const forceUpdate = useForceUpdate();
 	const classes = useStyles();
 
 	const [user, setUser] = useState({});
@@ -53,13 +55,11 @@ export default function UserAcceptPendingCard(props) {
 		}
 	};
 
-	const returnId = (user) => {
-		if (user) {
-			return user.id;
-		}
-	};
-
-	const neededid = returnId(user);
+	// const returnId = (user) => {
+	// 	if (user) {
+	// 		return user.id;
+	// 	}
+	// };
 
 	let pendingid = props.pending.id;
 
@@ -69,10 +69,15 @@ export default function UserAcceptPendingCard(props) {
 			headers: {
 				'Content-Type': 'application/json'
 			}
-		}).then((response) => {
-			console.log('Item was deleted!');
 		});
 	};
+
+	// const letsSee = () => {
+	// 	console.log('adf');
+	// 	fetch('http://localhost:3000/users')
+	// 		.then((resp) => resp.json())
+	// 		.then((data) => findNeededUser(data));
+	// };
 
 	const handleAccept = () => {
 		fetch('http://localhost:3000/meetups', {
@@ -95,7 +100,7 @@ export default function UserAcceptPendingCard(props) {
 	};
 
 	return (
-		<Card className={classes.card} variant="outlined">
+		<Card className={`${classes.card} card__container`} variant="outlined">
 			<CardContent>
 				<Typography gutterBottom>Invite From:{reutrnName(user)}</Typography>
 				<Typography className={classes.pos}>
@@ -112,12 +117,13 @@ export default function UserAcceptPendingCard(props) {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button size="small" onClick={() => handleAccept()}>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span className="button" size="small" onClick={() => handleAccept()}>
 					Accept
-				</Button>
-				<Button size="small" onClick={() => handleDelete()}>
+				</span>
+				<span className="button" size="small" onClick={() => handleDelete()}>
 					Decline
-				</Button>
+				</span>
 			</CardActions>
 		</Card>
 	);

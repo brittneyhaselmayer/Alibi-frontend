@@ -51,14 +51,14 @@ export default function UserSentPendingCard(props) {
 	};
 
 	return (
-		<Card className={classes.card} variant="outlined">
+		<Card className={`${classes.card} card__container`} variant="outlined">
 			<CardContent>
 				<Typography gutterBottom>
 					Waiting for:
 					{reutrnName(user)}
 				</Typography>
 				<Typography className={classes.pos}>
-					Go To:
+					To accept:
 					<h2>{props.pending.event.occasion}</h2>
 				</Typography>
 				<Typography>

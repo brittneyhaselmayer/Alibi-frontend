@@ -1,0 +1,26 @@
+/* .main {
+	overflow: hidden;
+} */
+
+#date__container {
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 16px;
+	/* overflow-y: auto; */
+}
+
+#uad-cards__container,
+#usd-cards__container {
+	grid-template-columns: 1fr;
+	grid-gap: 8px;
+	max-height: 600px;
+	/* overflow-y: auto; */
+	padding: 24px 0;
+}
+
+#uad-cards__container .card__container,
+#usd-cards__container .card__container {
+	margin: 0 auto;
+	height: 400px;
+	max-width: 350px;
+	width: 100%;
+}
