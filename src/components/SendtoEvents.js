@@ -8,7 +8,7 @@ export default function SendtoEvents() {
 		<div>
 			<h1> {`You have selected ${picked} as an alibi`}</h1>
 			<Link to="/home/events">
-				<button>Select Event</button>
+				<span className="button">Select Event</span>
 			</Link>
 		</div>
 	);

@@ -16,7 +16,7 @@ export default function AlibiContainer() {
 	}, []);
 
 	const selected = useSelector((state) => state.alibiselect);
-	const currentuserid = useSelector((state) => state.currentUser.id);
+	// const currentuserid = useSelector((state) => state.currentUser.id);
 
 	return (
 		<>

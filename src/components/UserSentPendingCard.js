@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import hourglass from '../assets/hourglass.png';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -53,7 +54,7 @@ export default function UserSentPendingCard(props) {
 	return (
 		<Card className={`${classes.card} card__container`} variant="outlined">
 			<CardContent>
-				<Typography gutterBottom>
+				<Typography>
 					Waiting for:
 					{reutrnName(user)}
 				</Typography>
@@ -65,10 +66,8 @@ export default function UserSentPendingCard(props) {
 					On:
 					<h2>{props.pending.date}</h2>
 				</Typography>
-				<Typography variant="h5" component="h2">
-					{/* {props.alibi.when} */}
-				</Typography>
-
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<img src={hourglass} alt="hourglass"></img>
 				<Typography variant="body2" component="p"></Typography>
 			</CardContent>
 			<CardActions></CardActions>

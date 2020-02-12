@@ -1,6 +1,6 @@
 #alibi-cards__container {
 	grid-template-columns: repeat(auto-fit, 275px);
-	grid-gap: 8px;
+	grid-gap: 30px;
 }
 
 h1 {
@@ -10,4 +10,14 @@ h1 {
 p {
 	font-size: 1.5em;
 	text-align: center;
+}
+
+.heading {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 60px;
+}
+
+.paragraph {
+	font-size: 35px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

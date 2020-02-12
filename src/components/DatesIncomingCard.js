@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 import Typography from '@material-ui/core/Typography';
 import { useSelector, useDispatch } from 'react-redux';
+import celebrate from '../assets/celebrate.jpg';
 
 const useStyles = makeStyles({
 	card: {
@@ -43,7 +44,7 @@ export default function DatesIncomingCard(props) {
 
 	const returnName = (user) => {
 		if (user) {
-			return <h2>{user.name}</h2>;
+			return <h1>{user.name}</h1>;
 		}
 	};
 	const getemail = (user) => {
@@ -54,21 +55,22 @@ export default function DatesIncomingCard(props) {
 	return (
 		<Card className={`${classes.card} card__container`} variant="outlined">
 			<CardContent>
-				<Typography className={classes.pos} color="textSecondary">
-					You accepted:
+				<Typography>
+					<h2>You are obligation free!</h2>
 				</Typography>
-				<Typography variant="h5" component="h2" text-align="center">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					{props.date.event.occasion}
-				</Typography>
-				<Typography className={classes.pos} color="textSecondary">
-					With:
-				</Typography>
-				<Typography gutterBottom>{returnName(user)}</Typography>
 
-				<Typography variant="body2" component="p">
-					On: {props.date.date}
+				<img src={celebrate} alt="fireworks"></img>
+				<Typography gutterBottom>
+					<h2>{props.date.event.occasion}</h2>
 				</Typography>
+				<Typography gutterBottom>With Alibi:{returnName(user)}</Typography>
+				<Typography gutterBottom>
+					<h2> On: {props.date.date}</h2>
+				</Typography>
+
+				{/* <Typography variant="body2" component="p">
+					On: {props.date.date}
+				</Typography> */}
 				<Typography className={classes.pos} color="textSecondary">
 					Get in touch:
 				</Typography>

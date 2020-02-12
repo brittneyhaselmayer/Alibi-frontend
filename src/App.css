@@ -30,7 +30,7 @@
 .main {
 	padding: 24px 16px;
 	overflow-y: auto;
-	background-color: #bfc3ba;
+	background-color: #fae6d6;
 }
 
 ul {
@@ -44,17 +44,19 @@ ul {
 	border: 1px solid rgba(18, 18, 18, 0.15);
 	color: #e6e9e3;
 	display: inline-block;
-	font-size: 14px;
+	font-size: 18px;
 	line-height: 18px;
 	padding: 11px 22px;
 	min-width: 100px;
 	text-align: center;
 	transition: all 0.15s ease-in-out;
+	font-weight: bold;
+	font-family: monospace;
 }
 
 .button:hover {
-	background-color: rgb(18, 18, 18);
-	color: rgb(245, 245, 245); /* THIS IS ADAM'S FAVORITE OFF-WHITE */
+	background-color: rgb(245, 245, 245); /*change this*/
+	color: rgb(18, 18, 18);
 	transition: all 0.15s ease-in-out;
 }
 
@@ -73,6 +75,11 @@ ul {
 }
 
 .card__container:hover {
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+	box-shadow: 0 25px 25px rgba(0, 0, 0, 0.8);
 	cursor: pointer;
+}
+
+.heading {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 60px;
 }

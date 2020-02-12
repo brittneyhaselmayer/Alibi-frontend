@@ -19,7 +19,8 @@
 #uap-cards__container .card__container,
 #usp-cards__container .card__container {
 	margin: 0 auto;
-	height: 450px;
+	height: 475px;
 	max-width: 350px;
 	width: 100%;
+	background-color: #faf9f4;
 }
