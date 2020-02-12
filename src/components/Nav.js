@@ -11,6 +11,7 @@ import user from '../actions/user';
 import storeAlibis from '../actions/storeAlibis';
 import truefalsealibi from '../actions/alibiselect';
 import isAlibi from '../actions/isAlibi';
+import '../styles/Nav.css';
 
 import '../styles/Nav.css';
 
@@ -69,7 +70,7 @@ export default function Nav() {
 					<AppBar position="static" color="blue">
 						<Toolbar>
 							<Typography variant="h6" className={classes.title}>
-								<strong>ALIBI</strong>
+								<strong className="Heading">ALIBI</strong>
 							</Typography>
 
 							<Link to="/">

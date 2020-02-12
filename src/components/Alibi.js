@@ -7,7 +7,7 @@ import '../styles/Alibi.css';
 export default function Alibi() {
 	return (
 		<div>
-			<h1>Alibi</h1>
+			<h1 className="heading">ALIBI</h1>
 
 			<Instructions></Instructions>
 			<AlibiContainer></AlibiContainer>

@@ -3,10 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-
+import check from '../assets/check.png';
+import x from '../assets/reject.png';
 import Typography from '@material-ui/core/Typography';
-// import { useSelector } from 'react-redux';
-// import useForceUpdate from 'use-force-update';
+import { useSelector, useDispatch } from 'react-redux';
+import pendingaccepted from '../actions/pendingaccepted';
+// import pendingaccept from '../reducers/pendingaccept';
 
 const useStyles = makeStyles({
 	card: {
@@ -33,6 +35,7 @@ export default function UserAcceptPendingCard(props) {
 	// console.log(props.pending.event.occasion);
 	// const forceUpdate = useForceUpdate();
 	const classes = useStyles();
+	const dispatch = useDispatch();
 
 	const [user, setUser] = useState({});
 
@@ -69,15 +72,12 @@ export default function UserAcceptPendingCard(props) {
 			headers: {
 				'Content-Type': 'application/json'
 			}
-		});
+		}).then(() => blah());
 	};
 
-	// const letsSee = () => {
-	// 	console.log('adf');
-	// 	fetch('http://localhost:3000/users')
-	// 		.then((resp) => resp.json())
-	// 		.then((data) => findNeededUser(data));
-	// };
+	const blah = () => {
+		dispatch(pendingaccepted());
+	};
 
 	const handleAccept = () => {
 		fetch('http://localhost:3000/meetups', {
@@ -111,10 +111,13 @@ export default function UserAcceptPendingCard(props) {
 					On:
 					<h2>{props.pending.date}</h2>
 				</Typography>
-
 				<Typography variant="body2" component="p">
 					{/* description at some point */}
 				</Typography>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<img src={check} alt="check"></img>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<img src={x} alt="x"></img>
 			</CardContent>
 			<CardActions>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
